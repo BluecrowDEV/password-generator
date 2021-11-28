@@ -1,0 +1,41 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo 'Checking everything before committing'
+
+## Check tsconfig standards
+npm run check-types ||
+(
+  echo 'Type check FAILED!'
+  false;
+)
+
+## Check prettier standards
+npm run check-format ||
+(
+  echo 'Format check FAILED!
+        Run ´npm run format´, add changes and try to commit again.'
+  false;
+)
+
+## Check eslint standards
+npm run check-lint ||
+(
+  echo 'ESlint check FAILED!
+        Make the required changes listed above, add changes and try to commit again.'
+  false;
+)
+
+## If everything passes, try run build
+echo 'Everything right!
+      Trying to run build.'
+npm run build ||
+(
+  echo 'Build FAILED!
+        Next build failed: View the errors above to see why.
+  '
+  false;
+)
+
+## If can commit
+echo 'Everything good! Committing...'
