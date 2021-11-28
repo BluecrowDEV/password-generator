@@ -1,7 +1,14 @@
-import type { NextPage } from 'next'
+import React from "react";
+import type { NextPage } from "next";
 
 const Page: NextPage = () => {
-  return <h1>Index</h1>
-}
+  return (
+    <>
+      <h1>page</h1>
+      <header>atesjm</header>
+      <div>assa</div>
+    </>
+  );
+};
 
-export default Page
+export default Page;
