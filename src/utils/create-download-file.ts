@@ -5,13 +5,13 @@ export const createAndDownloadFile = (
   filename?: string
 ): void => {
   if (!condition) {
-    alert("Anything to download");
+    alert('Anything to download');
     return;
   }
 
   element.setAttribute(
-    "href",
-    "data:text/plain;charset=utf-8," + encodeURIComponent(content)
+    'href',
+    'data:text/plain;charset=utf-8,' + encodeURIComponent(content)
   );
-  element.setAttribute("download", filename ? filename : `${Date.now()}`);
+  element.setAttribute('download', filename ? filename : `${Date.now()}`);
 };
